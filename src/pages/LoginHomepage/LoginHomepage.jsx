@@ -11,7 +11,9 @@ export default function LoginHomepage() {
 
     return (
         <div className="login-container">
-            <h1 className="header">Welcome to NC News</h1>
+            <div className="login-container__h1-container">
+                <h1 className="login-container__h1">Welcome to NC News</h1>
+            </div>
             <section className="login-section">
                 <form action="" className="login-form">
                     <div className="form-group">

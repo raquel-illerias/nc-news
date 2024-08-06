@@ -1,7 +1,47 @@
+import { useState, useEffect } from "react"
+import "./articlesMain.css";
+import { getArticles } from "../../api";
+import voteIcon from '../../assets/vote.svg';
+
 export default function ArticlesMain() {
+    const [articles, setArticles] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        setIsLoading(true);
+        getArticles().then((articlesFromApi) => {
+            setArticles(articlesFromApi); 
+            setIsLoading(false);           
+        })
+    }, [])
+
+    if(isLoading) {
+        return (
+            <div>
+                <h2>Loading...</h2>
+            </div>
+        )       
+    }
+
     return (
         <>
-            <h2>Articles main</h2>
+            {articles.map((article) => (
+                <div className="article-container" key={article.article_id}>
+                    <img src={article.article_img_url} alt={article.title} className="article-image" />
+                    <h2 className="article-title">{article.title}</h2>
+                    <h3 className="article-author">{article.author}</h3>
+                    <h4 className="article-topic">{article.topic}</h4>
+                    <div className="vote-comments-container">
+                        <div className="vote-block">
+                            <img src={voteIcon} alt="Vote icon" className="vote-icon" />
+                            <h5 className="vote-text">{article.votes}</h5>
+                        </div>
+                        <div className="comment-block">
+                            <h5 className="comment-text">Comments: {article.comment_count}</h5>
+                        </div>
+                    </div>
+                </div>
+            ))}
         </>
     )
 }
