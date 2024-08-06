@@ -1,23 +1,23 @@
 .app-container {
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
 .app-container__header-container {
-    width: 100%;
-    position: sticky;
-    top: 0;   
+  width: 100%;
+  position: sticky;
+  top: 0;
 }
 
 .app-container__routes-container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

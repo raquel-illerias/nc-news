@@ -1,0 +1,42 @@
+.individual-article__comments-section {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out;
+  background-color: #fff;
+}
+
+.individual-article__comments-section--visible {
+  max-height: 2000px;
+  padding: 20px;
+}
+
+.individual-article__comments-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.individual-article__comments-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.individual-article__comment {
+  margin-bottom: 10px;
+}
+
+.individual-article__comment-author {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.individual-article__comment-body {
+  font-size: 1rem;
+  color: #555;
+}
+
+.individual-article__no-comments {
+  font-size: 1rem;
+  color: #888;
+}
