@@ -1,59 +1,69 @@
-.article-container {
-    margin: 20px auto;
+.articles-grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    padding: 20px;
+  }
+  
+  .article-container {
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 8px;
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(72, 71, 71, 0.1);
-}
-
-.article-image {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .article-image {
     width: 100%;
     height: auto;
     border-radius: 4px;
-}
-
-.article-title {
+  }
+  
+  .article-title {
     color: #333;
-    font-size: 28px;
+    font-size: 24px;
     font-weight: bold;
     margin-bottom: 8px;
-}
-
-.article-author {
+  }
+  
+  .article-author {
     color: #555;
     font-size: 18px;
-}
-
-.article-topic {
+  }
+  
+  .article-topic {
     color: #888;
     font-size: 16px;
     font-style: italic;
     margin-top: 4px;
     margin-bottom: 12px;
-}
-
-.vote-comments-container {
+  }
+  
+  .vote-comments-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 15px;
     padding-top: 10px;
     border-top: 1px solid #eee;
-}
-
-.vote-block, .comment-block {
+  }
+  
+  .vote-block, .comment-block {
     display: flex;
     align-items: center;
-}
-
-.vote-icon {
+  }
+  
+  .vote-icon {
     margin-right: 8px;
     width: 24px;
     height: 24px;
-}
-
-.vote-text, .comment-text {
+  }
+  
+  .vote-text, .comment-text {
     font-size: 16px;
     color: #666;
-}
+  }
+  
