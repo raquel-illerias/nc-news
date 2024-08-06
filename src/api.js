@@ -12,7 +12,12 @@ export const getArticles = () => {
 
 export const getIndividualArticle = (article_id) => {
     return api.get(`/articles/${article_id}`).then(({data}) => {
-       console.log(data.article, 'data article')
         return data.article
+    })
+}
+
+export const getCommentFromArticle = (article_id) => {
+    return api.get(`/articles/${article_id}/comments`).then(({data}) => {      
+        return data.comments
     })
 }

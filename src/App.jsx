@@ -18,6 +18,7 @@ export default function App() {
           <Route path="/" element={<LoginHomepage />}></Route>
           <Route path="/articles" element={<ArticlesMain />}></Route>
           <Route path="/article/:article_id" element={<IndividualArticle />} />
+          <Route path="/article/:article_id/comments" element={<IndividualArticle />} />
         </Routes>  
       </div>
     </div>
