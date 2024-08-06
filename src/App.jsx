@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import LoginHomepage from "./pages/LoginHomepage/LoginHomepage";
 import ArticlesMain from "./pages/ArticlesMain/ArticlesMain";
+import IndividualArticle from "./pages/IndividualArticle/IndividualArticle"
 import Header from "./components/Header/Header";
 import './App.css';
 
@@ -16,6 +17,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<LoginHomepage />}></Route>
           <Route path="/articles" element={<ArticlesMain />}></Route>
+          <Route path="/article/:article_id" element={<IndividualArticle />} />
         </Routes>  
       </div>
     </div>
