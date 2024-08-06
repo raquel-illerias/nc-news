@@ -1,0 +1,59 @@
+.article-container {
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(72, 71, 71, 0.1);
+}
+
+.article-image {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.article-title {
+    color: #333;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.article-author {
+    color: #555;
+    font-size: 18px;
+}
+
+.article-topic {
+    color: #888;
+    font-size: 16px;
+    font-style: italic;
+    margin-top: 4px;
+    margin-bottom: 12px;
+}
+
+.vote-comments-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
+
+.vote-block, .comment-block {
+    display: flex;
+    align-items: center;
+}
+
+.vote-icon {
+    margin-right: 8px;
+    width: 24px;
+    height: 24px;
+}
+
+.vote-text, .comment-text {
+    font-size: 16px;
+    color: #666;
+}
