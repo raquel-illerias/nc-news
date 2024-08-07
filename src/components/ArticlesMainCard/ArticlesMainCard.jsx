@@ -1,7 +1,20 @@
 import { Link } from "react-router-dom";
 import voteIcon from "../../assets/vote-icon.svg";
+import { patchVoteInArticle } from "../../api";
 
-export default function ArticlesMainCard({ articles }) {
+export default function ArticlesMainCard({ articles, setArticles }) {
+  function handleClickVote(article_id, increment) {
+    patchVoteInArticle(article_id, increment).then(() => {
+      setArticles((prevArticles) =>
+        prevArticles.map((article) =>
+          article.article_id === article_id
+            ? { ...article, votes: article.votes + increment }
+            : article
+        )
+      );
+    });
+  }
+
   return (
     <>
       {articles.map((article) => (
@@ -28,7 +41,12 @@ export default function ArticlesMainCard({ articles }) {
               </h5>
             </div>
             <div className="vote-block">
-              <img src={voteIcon} alt="Vote icon" className="vote-icon" />
+              <img
+                src={voteIcon}
+                alt="Vote icon"
+                className="vote-icon"
+                onClick={() => handleClickVote(article.article_id, 1)}
+              />
               <h5 className="vote-text">{article.votes}</h5>
             </div>
           </div>
