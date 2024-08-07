@@ -35,12 +35,14 @@ export default function Header() {
             </h2>
           </div>
           <div className="logout-container">
-            <img
-              className="header__logout-img"
-              src={logoutIcon}
-              alt="Icon depicting a logout symbol, which consists of a right-pointing arrow exiting an open door."
-            />
-            <h2 className="header__logout-text">Logout</h2>
+            <Link to={`/`}>
+              <img
+                className="header__logout-img"
+                src={logoutIcon}
+                alt="Icon depicting a logout symbol, which consists of a right-pointing arrow exiting an open door."
+              />
+              <h2 className="header__logout-text">Logout</h2>
+            </Link>
           </div>
         </div>
       </div>

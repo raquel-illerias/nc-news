@@ -1,11 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import "./loginHomepage.css";
-import { useContext } from "react";
-import { UserContext } from "../../contexts/User";
+import { useState } from "react";
 
 export default function LoginHomepage() {
   const navigate = useNavigate();
-  const { user, setUser } = useContext(UserContext);
+  const [user, setUser] = useState({
+    username: "",
+  });
 
   function handleUserChange(e) {
     const newUsername = e.target.value;
