@@ -1,8 +1,26 @@
+.login-homepage {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0.901) 65%
+    ),
+    url("/src/assets/earth-bkgn.jpg");
+  background-size: cover;
+  background-position: left;
+}
+
 .login-container {
   width: 300px;
   border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  box-shadow: 5px 5px 10px -8px rgba(66, 68, 90, 1);
   background-color: #fff;
   display: flex;
   flex-direction: column;

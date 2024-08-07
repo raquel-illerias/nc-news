@@ -1,4 +1,6 @@
 .articles-grid {
+  width: 90%;
+  margin: auto;
   display: grid;
   gap: 20px;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -7,8 +9,8 @@
 
 .article-container {
   padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  border: 1px solid #dedddd;
+  border-radius: 15px;
   background-color: #fff;
   box-shadow: 0 4px 8px rgba(72, 71, 71, 0.1);
   display: flex;
@@ -16,28 +18,36 @@
   justify-content: space-between;
 }
 
+.article__img-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .article-image {
-  width: 100%;
+  width: 200px;
   height: auto;
-  border-radius: 4px;
 }
 
 .article-title {
-  color: #333;
-  font-size: 24px;
+  color: #212020;
+  font-size: 22px;
   font-weight: bold;
-  margin-bottom: 8px;
+  margin: 10px 0;
+  text-align: center;
 }
 
 .article-author {
-  color: #555;
-  font-size: 18px;
+  color: #a2a0a0;
+  font-size: 16px;
 }
 
 .article-topic {
-  color: #888;
+  color: #a2a0a0;
+  font-family: "PT Sans Narrow", sans-serif;
+  font-weight: 400;
+  font-style: normal;
   font-size: 16px;
-  font-style: italic;
   margin-top: 4px;
   margin-bottom: 12px;
 }
@@ -66,5 +76,5 @@
 .vote-text,
 .comment-text {
   font-size: 16px;
-  color: #666;
+  color: #212020;
 }

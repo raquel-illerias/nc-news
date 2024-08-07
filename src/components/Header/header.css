@@ -22,23 +22,53 @@
 }
 
 .header h1 {
-  font-family: 'Salsa', cursive;
+  font-family: "Roboto", cursive;
   font-weight: 400;
   font-style: normal;
   font-size: 2.5rem;
   color: #c40505;
 }
 
-.logout-container {
+.header__log-container {
   width: 100px;
   height: 100%;
-  margin: 0 1.2rem;
   display: flex;
-  align-items: center;
-  justify-content: space-evenly;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 0.8rem;
 }
 
-.logout-text {
+.header__username-container {
+  width: 150px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  margin-right: 1.2rem;
+}
+
+.header__username {
   font-size: 1rem;
   color: #000;
+}
+
+.logout-container {
+  width: 150px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+}
+
+.header__logout-text {
+  font-size: 1rem;
+  color: #000;
+}
+
+.header__logout-text:hover {
+  text-decoration: underline;
+}
+
+.header__logout-img {
+  width: 20px;
+  margin-right: 0.5rem;
 }
