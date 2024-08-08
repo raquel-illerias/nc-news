@@ -1,18 +1,29 @@
 import { Link } from "react-router-dom";
 import voteIcon from "../../assets/vote-icon.svg";
+import voteDownIcon from "../../assets/vote-down-icon.svg";
 import { patchVoteInArticle } from "../../api";
 
 export default function ArticlesMainCard({ articles, setArticles }) {
   function handleClickVote(article_id, increment) {
-    patchVoteInArticle(article_id, increment).then(() => {
-      setArticles((prevArticles) =>
-        prevArticles.map((article) =>
-          article.article_id === article_id
-            ? { ...article, votes: article.votes + increment }
-            : article
-        )
-      );
-    });
+    setArticles((prevArticles) =>
+      prevArticles.map((article) => {
+        if (article.article_id === article_id) {
+          const newVoteCount = article.votes + increment;
+          if (increment > 0 || (increment < 0 && article.votes > 0)) {
+            patchVoteInArticle(article_id, increment).then(() => {
+              setArticles((updatedArticles) =>
+                updatedArticles.map((updatedArticle) =>
+                  updatedArticle.article_id === article_id
+                    ? { ...updatedArticle, votes: Math.max(newVoteCount, 0) }
+                    : updatedArticle
+                )
+              );
+            });
+          }
+        }
+        return article;
+      })
+    );
   }
 
   return (
@@ -43,11 +54,17 @@ export default function ArticlesMainCard({ articles, setArticles }) {
             <div className="vote-block">
               <img
                 src={voteIcon}
-                alt="Vote icon"
+                alt="Vote up icon"
                 className="vote-icon"
                 onClick={() => handleClickVote(article.article_id, 1)}
               />
               <h5 className="vote-text">{article.votes}</h5>
+              <img
+                src={voteDownIcon}
+                alt="Vote down icon"
+                className="vote-icon"
+                onClick={() => handleClickVote(article.article_id, -1)}
+              />
             </div>
           </div>
         </div>

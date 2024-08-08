@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getCommentFromArticle, getIndividualArticle } from "../../api";
+import {
+  getCommentFromArticle,
+  getIndividualArticle,
+  patchVoteInArticle,
+} from "../../api";
 import voteIcon from "../../assets/vote-icon.svg";
+import voteDownIcon from "../../assets/vote-down-icon.svg";
 import "./individualArticle.css";
 import ArticleComments from "../../components/ArticleComments/ArticleComments";
 
@@ -11,6 +16,17 @@ export default function IndividualArticle() {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [showComments, setShowComments] = useState(false);
+
+  function handleClickVote(increment) {
+    if (increment > 0 || (increment < 0 && article.votes > 0)) {
+      patchVoteInArticle(article_id, increment).then(() => {
+        setArticle((prevArticle) => ({
+          ...prevArticle,
+          votes: Math.max(prevArticle.votes + increment, 0),
+        }));
+      });
+    }
+  }
 
   function handleComments() {
     setShowComments(!showComments);
@@ -80,10 +96,17 @@ export default function IndividualArticle() {
             <div className="individual-article__vote-block">
               <img
                 src={voteIcon}
-                alt="Vote icon"
+                alt="Vote up icon"
                 className="individual-article__vote-icon"
+                onClick={() => handleClickVote(1)}
               />
               <h5 className="individual-article__vote-text">{article.votes}</h5>
+              <img
+                src={voteDownIcon}
+                alt="Vote down icon"
+                className="individual-article__vote-icon"
+                onClick={() => handleClickVote(-1)}
+              />
             </div>
           </div>
         </div>
