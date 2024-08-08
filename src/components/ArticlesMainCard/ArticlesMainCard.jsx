@@ -10,12 +10,19 @@ export default function ArticlesMainCard({ articles, setArticles }) {
         if (article.article_id === article_id) {
           const newVoteCount = article.votes + increment;
           if (increment > 0 || (increment < 0 && article.votes > 0)) {
-            patchVoteInArticle(article_id, increment).then(() => {
-              setArticles((updatedArticles) =>
-                updatedArticles.map((updatedArticle) =>
-                  updatedArticle.article_id === article_id
-                    ? { ...updatedArticle, votes: Math.max(newVoteCount, 0) }
-                    : updatedArticle
+            setArticles((updatedArticles) =>
+              updatedArticles.map((updatedArticle) =>
+                updatedArticle.article_id === article_id
+                  ? { ...updatedArticle, votes: Math.max(newVoteCount, 0) }
+                  : updatedArticle
+              )
+            );
+            patchVoteInArticle(article_id, increment).catch(() => {
+              setArticles((revertedArticles) =>
+                revertedArticles.map((revertedArticle) =>
+                  revertedArticle.article_id === article_id
+                    ? { ...revertedArticle, votes: Math.max(article.votes, 0) }
+                    : revertedArticle
                 )
               );
             });
