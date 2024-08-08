@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./articleComments.css";
 import { postComment } from "../../api";
 
@@ -6,8 +6,10 @@ export default function ArticleComments({
   showComments,
   comments,
   article_id,
+  setComments,
 }) {
   const [commentValue, setCommentValue] = useState("");
+  const [allComments, setAllComments] = useState(comments);
 
   function handleChange(e) {
     setCommentValue(e.target.value);
@@ -17,10 +19,39 @@ export default function ArticleComments({
     e.preventDefault();
     if (commentValue !== "") {
       postComment(article_id, commentValue).then((data) => {
-        console.log("Comment posted:", data);
+        console.log(data.data.comment);
+        setComments((state) => {
+          const copyComments = [...state];
+          copyComments.unshift(data.data.comment);
+          return copyComments;
+        });
       });
     }
   }
+
+  const renderComments = () => {
+    return allComments.length > 0 ? (
+      allComments.map((comment) => (
+        <div key={comment.comment_id} className="individual-article__comment">
+          <h5 className="individual-article__author-text">
+            Posted by{" "}
+            <span className="individual-article__comment-author">
+              {comment.author}
+            </span>
+          </h5>
+          <p className="individual-article__comment-body">{comment.body}</p>
+        </div>
+      ))
+    ) : (
+      <p className="individual-article__no-comments">
+        There are no comments yet. Be the first to post a new comment!
+      </p>
+    );
+  };
+
+  useEffect(() => {
+    setAllComments(comments);
+  }, [comments]);
 
   return (
     <div
@@ -48,23 +79,7 @@ export default function ArticleComments({
           POST
         </button>
       </form>
-      {comments.length > 0 ? (
-        comments.map((comment) => (
-          <div key={comment.comment_id} className="individual-article__comment">
-            <h5 className="individual-article__author-text">
-              Posted by{" "}
-              <span className="individual-article__comment-author">
-                {comment.author}
-              </span>
-            </h5>
-            <p className="individual-article__comment-body">{comment.body}</p>
-          </div>
-        ))
-      ) : (
-        <p className="individual-article__no-comments">
-          There are no comments yet. Be the first to post a new comment!
-        </p>
-      )}
+      {renderComments()}
     </div>
   );
 }
