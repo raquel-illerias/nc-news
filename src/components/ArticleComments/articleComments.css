@@ -1,13 +1,20 @@
 .individual-article__comments-section {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.5s ease-out;
+  transition: max-height 0.5s ease-in-out;
   background-color: #fff;
 }
 
 .individual-article__comments-section--visible {
+  max-width: fit-content;
   max-height: 2000px;
-  padding: 20px;
+  padding: 60px;
+}
+
+.individual-article__comment {
+  margin: 30px 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #c2c0c0;
 }
 
 .individual-article__comments-title {
@@ -22,21 +29,21 @@
   gap: 10px;
 }
 
-.individual-article__comment {
+.individual-article__author-text {
+  font-size: 0.8rem;
+  font-weight: normal;
   margin-bottom: 10px;
 }
 
 .individual-article__comment-author {
-  font-size: 1.1rem;
   font-weight: bold;
+  text-transform: capitalize;
 }
 
 .individual-article__comment-body {
   font-size: 1rem;
-  color: #555;
 }
 
 .individual-article__no-comments {
   font-size: 1rem;
-  color: #888;
 }

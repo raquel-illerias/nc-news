@@ -9,15 +9,18 @@ export default function ArticleComments({ showComments, comments }) {
       {comments.length > 0 ? (
         comments.map((comment) => (
           <div key={comment.comment_id} className="individual-article__comment">
-            <h5 className="individual-article__comment-author">
-              {comment.author}
+            <h5 className="individual-article__author-text">
+              Posted by{" "}
+              <span className="individual-article__comment-author">
+                {comment.author}
+              </span>
             </h5>
             <p className="individual-article__comment-body">{comment.body}</p>
           </div>
         ))
       ) : (
         <p className="individual-article__no-comments">
-          There are no comments yet. Be the first one to post
+          There are no comments yet. Be the first to post a new comment!
         </p>
       )}
     </div>
