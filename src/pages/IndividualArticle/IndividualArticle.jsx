@@ -115,7 +115,11 @@ export default function IndividualArticle() {
             </div>
           </div>
         </div>
-        <ArticleComments comments={comments} showComments={showComments} />
+        <ArticleComments
+          comments={comments}
+          showComments={showComments}
+          article_id={article_id}
+        />
       </section>
     </div>
   );

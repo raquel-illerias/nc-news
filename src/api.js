@@ -25,3 +25,10 @@ export const getCommentFromArticle = (article_id) => {
 export const patchVoteInArticle = (article_id, votes) => {
   return api.patch(`/articles/${article_id}`, { inc_votes: votes });
 };
+
+export const postComment = (article_id, body) => {
+  return api.post(`/articles/${article_id}/comments`, {
+    username: localStorage.getItem("username"),
+    body: body,
+  });
+};
