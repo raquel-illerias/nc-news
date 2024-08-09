@@ -103,3 +103,21 @@
 .individual-article__no-comments {
   font-size: 1rem;
 }
+
+.article-comments__success-container {
+  background-color: rgba(182, 247, 182, 0.466);
+  max-width: 300px;
+  height: 80px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.article-comments__success-p {
+  color: rgb(51, 121, 51);
+  font-size: 1rem;
+  padding: 10px;
+  text-align: center;
+}

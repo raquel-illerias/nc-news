@@ -10,6 +10,7 @@ export default function ArticleComments({
 }) {
   const [commentValue, setCommentValue] = useState("");
   const [allComments, setAllComments] = useState(comments);
+  const [openSnackBar, setOpenSnackBar] = useState(false);
 
   function handleChange(e) {
     setCommentValue(e.target.value);
@@ -18,18 +19,20 @@ export default function ArticleComments({
   function handleOnClick(e) {
     e.preventDefault();
     if (commentValue !== "") {
-      postComment(article_id, commentValue).then((data) => {
-        console.log(data.data.comment);
-        setComments((state) => {
-          const copyComments = [...state];
-          copyComments.unshift(data.data.comment);
-          return copyComments;
-        });
-      });
+      postComment(article_id, commentValue)
+        .then((data) => {
+          console.log(data.data.comment);
+          setComments((state) => {
+            const copyComments = [...state];
+            copyComments.unshift(data.data.comment);
+            return copyComments;
+          });
+        })
+        .then(() => setOpenSnackBar(true));
     }
   }
 
-  const renderComments = () => {
+  function renderComments() {
     return allComments.length > 0 ? (
       allComments.map((comment) => (
         <div key={comment.comment_id} className="individual-article__comment">
@@ -47,11 +50,23 @@ export default function ArticleComments({
         There are no comments yet. Be the first to post a new comment!
       </p>
     );
-  };
+  }
 
   useEffect(() => {
     setAllComments(comments);
   }, [comments]);
+
+  useEffect(() => {
+    function myTimeout() {
+      setTimeout(() => {
+        setOpenSnackBar(false);
+      }, 4000);
+    }
+    if (openSnackBar) {
+      myTimeout();
+    }
+    return () => clearTimeout(myTimeout);
+  }, [openSnackBar]);
 
   return (
     <div
@@ -79,6 +94,13 @@ export default function ArticleComments({
           POST
         </button>
       </form>
+      {openSnackBar && (
+        <div className="article-comments__success-container">
+          <p className="article-comments__success-p">
+            Success! Your comment was posted
+          </p>
+        </div>
+      )}
       {renderComments()}
     </div>
   );
