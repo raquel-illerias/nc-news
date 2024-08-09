@@ -56,13 +56,15 @@
   color: #555;
 }
 
-.form-input {
+.form-select {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
   width: 100%;
   box-sizing: border-box;
   font-size: 16px;
+  appearance: none;
+  background-color: #fff;
 }
 
 .login-button {

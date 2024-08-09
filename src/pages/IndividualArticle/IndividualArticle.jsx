@@ -19,10 +19,15 @@ export default function IndividualArticle() {
 
   function handleClickVote(increment) {
     if (increment > 0 || (increment < 0 && article.votes > 0)) {
-      patchVoteInArticle(article_id, increment).then(() => {
+      setArticle((prevArticle) => ({
+        ...prevArticle,
+        votes: Math.max(prevArticle.votes + increment, 0),
+      }));
+
+      patchVoteInArticle(article_id, increment).catch(() => {
         setArticle((prevArticle) => ({
           ...prevArticle,
-          votes: Math.max(prevArticle.votes + increment, 0),
+          votes: Math.max(prevArticle.votes - increment, 0),
         }));
       });
     }
@@ -110,7 +115,12 @@ export default function IndividualArticle() {
             </div>
           </div>
         </div>
-        <ArticleComments comments={comments} showComments={showComments} />
+        <ArticleComments
+          comments={comments}
+          setComments={setComments}
+          showComments={showComments}
+          article_id={article_id}
+        />
       </section>
     </div>
   );

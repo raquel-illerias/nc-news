@@ -8,6 +8,8 @@ export default function LoginHomepage() {
     username: "",
   });
 
+  const users = ["grumpy19", "cooljmessy", "happyamy2016", "jessjelly"];
+
   function handleUserChange(e) {
     const newUsername = e.target.value;
     setUser((prevUser) => ({ ...prevUser, username: newUsername }));
@@ -29,32 +31,27 @@ export default function LoginHomepage() {
           <form action="" className="login-form" onSubmit={handleLogin}>
             <div className="form-group">
               <label htmlFor="username" className="form-label">
-                Username
+                Select Username
               </label>
-              <input
-                type="text"
+              <select
                 id="username"
-                placeholder="Enter your username"
                 onChange={handleUserChange}
                 value={user.username}
-                className="form-input"
+                className="form-select"
                 required
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="password" className="form-label">
-                Password
-              </label>
-              <input
-                type="password"
-                id="password"
-                placeholder="Enter your password"
-                className="form-input"
-                required
-              />
+              >
+                <option value="" disabled>
+                  Choose a username
+                </option>
+                {users.map((username) => (
+                  <option key={username} value={username}>
+                    {username}
+                  </option>
+                ))}
+              </select>
             </div>
             <button type="submit" className="login-button">
-              Sign up
+              Sign In
             </button>
           </form>
         </section>

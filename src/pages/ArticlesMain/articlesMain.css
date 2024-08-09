@@ -12,7 +12,6 @@
 .article-container {
   padding: 20px;
   border: 1px solid #dedddd;
-  border-radius: 15px;
   background-color: #fff;
   box-shadow: 0 4px 8px rgba(72, 71, 71, 0.1);
   display: flex;
