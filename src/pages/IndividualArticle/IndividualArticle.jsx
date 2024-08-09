@@ -61,7 +61,7 @@ export default function IndividualArticle() {
         console.error("Error fetching comments:", error);
         setIsLoading(false);
       });
-  }, [article_id]);
+  }, [article_id, getCommentFromArticle]);
 
   if (isLoading) {
     return (
