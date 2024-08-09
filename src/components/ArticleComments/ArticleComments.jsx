@@ -10,7 +10,8 @@ export default function ArticleComments({
 }) {
   const [commentValue, setCommentValue] = useState("");
   const [allComments, setAllComments] = useState(comments);
-  const [openSnackBar, setOpenSnackBar] = useState(false);
+  const [openSuccessSnackBar, setOpenSuccessSnackBar] = useState(false);
+  const [openErrorSnackBar, setOpenErrorSnackBar] = useState(false);
 
   function handleChange(e) {
     setCommentValue(e.target.value);
@@ -21,14 +22,18 @@ export default function ArticleComments({
     if (commentValue !== "") {
       postComment(article_id, commentValue)
         .then((data) => {
-          console.log(data.data.comment);
           setComments((state) => {
             const copyComments = [...state];
             copyComments.unshift(data.data.comment);
             return copyComments;
           });
         })
-        .then(() => setOpenSnackBar(true));
+        .then(() => {
+          setOpenSuccessSnackBar(true);
+          setCommentValue("");
+        });
+    } else {
+      setOpenErrorSnackBar(true);
     }
   }
 
@@ -59,14 +64,26 @@ export default function ArticleComments({
   useEffect(() => {
     function myTimeout() {
       setTimeout(() => {
-        setOpenSnackBar(false);
+        setOpenSuccessSnackBar(false);
       }, 4000);
     }
-    if (openSnackBar) {
+    if (openSuccessSnackBar) {
       myTimeout();
     }
     return () => clearTimeout(myTimeout);
-  }, [openSnackBar]);
+  }, [openSuccessSnackBar]);
+
+  useEffect(() => {
+    function myTimeout() {
+      setTimeout(() => {
+        setOpenErrorSnackBar(false);
+      }, 4000);
+    }
+    if (openErrorSnackBar) {
+      myTimeout();
+    }
+    return () => clearTimeout(myTimeout);
+  }, [openErrorSnackBar]);
 
   return (
     <div
@@ -94,11 +111,16 @@ export default function ArticleComments({
           POST
         </button>
       </form>
-      {openSnackBar && (
+      {openSuccessSnackBar && (
         <div className="article-comments__success-container">
           <p className="article-comments__success-p">
             Success! Your comment was posted
           </p>
+        </div>
+      )}
+      {openErrorSnackBar && (
+        <div className="article-comments__error-container">
+          <p className="article-comments__error-p">Write a comment first</p>
         </div>
       )}
       {renderComments()}

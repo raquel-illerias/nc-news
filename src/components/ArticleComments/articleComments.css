@@ -109,6 +109,7 @@
   max-width: 300px;
   height: 80px;
   margin: auto;
+  margin-bottom: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -117,6 +118,25 @@
 
 .article-comments__success-p {
   color: rgb(51, 121, 51);
+  font-size: 1rem;
+  padding: 10px;
+  text-align: center;
+}
+
+.article-comments__error-container {
+  background-color: rgba(235, 155, 159, 0.466);
+  max-width: 300px;
+  height: 80px;
+  margin: auto;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.article-comments__error-p {
+  color: rgb(163, 38, 44);
   font-size: 1rem;
   padding: 10px;
   text-align: center;
