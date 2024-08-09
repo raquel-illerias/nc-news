@@ -9,12 +9,31 @@
   max-width: fit-content;
   max-height: 2000px;
   padding: 60px;
+  margin: auto;
 }
 
-.individual-article__comment {
+.article-comments__comment-container {
   margin: 30px 20px;
   padding-bottom: 20px;
   border-bottom: 1px solid #c2c0c0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.article-comments__delete-container {
+  width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.article-comments__delete-container h4 {
+  font-size: 0.8rem;
+  font-weight: 400;
 }
 
 .individual-article__comments-title {

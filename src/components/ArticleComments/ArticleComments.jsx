@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import "./articleComments.css";
-import { postComment } from "../../api";
+import { postComment, deleteComment } from "../../api";
+import deleteIcon from "../../assets/delete-icon.svg";
 
 export default function ArticleComments({
   showComments,
@@ -15,6 +16,16 @@ export default function ArticleComments({
 
   function handleChange(e) {
     setCommentValue(e.target.value);
+  }
+
+  function handleDeleteComment(e, comment_id) {
+    e.preventDefault();
+
+    deleteComment(comment_id).then(() => {
+      setComments((state) => {
+        return state.filter((comment) => comment.comment_id !== comment_id);
+      });
+    });
   }
 
   function handleOnClick(e) {
@@ -40,14 +51,28 @@ export default function ArticleComments({
   function renderComments() {
     return allComments.length > 0 ? (
       allComments.map((comment) => (
-        <div key={comment.comment_id} className="individual-article__comment">
-          <h5 className="individual-article__author-text">
-            Posted by{" "}
-            <span className="individual-article__comment-author">
-              {comment.author}
-            </span>
-          </h5>
-          <p className="individual-article__comment-body">{comment.body}</p>
+        <div
+          key={comment.comment_id}
+          className="article-comments__comment-container"
+        >
+          <div className="individual-article__comment">
+            <h5 className="individual-article__author-text">
+              Posted by{" "}
+              <span className="individual-article__comment-author">
+                {comment.author}
+              </span>
+            </h5>
+            <p className="individual-article__comment-body">{comment.body}</p>
+          </div>
+          {comment.author === localStorage.getItem("username") && (
+            <div
+              className="article-comments__delete-container"
+              onClick={(e) => handleDeleteComment(e, comment.comment_id)}
+            >
+              <img src={deleteIcon} alt="delete comment icon" />
+              <h4>Delete comment</h4>
+            </div>
+          )}
         </div>
       ))
     ) : (
@@ -120,7 +145,7 @@ export default function ArticleComments({
       )}
       {openErrorSnackBar && (
         <div className="article-comments__error-container">
-          <p className="article-comments__error-p">Write a comment first</p>
+          <p className="article-comments__error-p">Comments cannot be blank</p>
         </div>
       )}
       {renderComments()}
