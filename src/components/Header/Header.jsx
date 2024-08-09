@@ -29,8 +29,9 @@ export default function Header() {
           <div className="header__username-container">
             <h2 className="header__username">
               Hi,{" "}
-              {username.charAt(0).toUpperCase() +
-                username.slice(1).toLowerCase()}
+              {username &&
+                username.charAt(0).toUpperCase() +
+                  username.slice(1).toLowerCase()}
               !
             </h2>
           </div>
