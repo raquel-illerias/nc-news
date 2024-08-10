@@ -4,10 +4,12 @@ const api = axios.create({
   baseURL: "https://raquel-illerias-be-nc-news.onrender.com/api",
 });
 
-export const getArticles = () => {
-  return api.get("/articles").then(({ data }) => {
-    return data.articles;
-  });
+export const getArticles = (topic) => {
+  return api
+    .get(`/articles${topic ? `?topic=${topic}` : ""}`)
+    .then(({ data }) => {
+      return data.articles;
+    });
 };
 
 export const getIndividualArticle = (article_id) => {
@@ -35,4 +37,8 @@ export const postComment = (article_id, body) => {
 
 export const deleteComment = (comment_id) => {
   return api.delete(`/comments/${comment_id}`);
+};
+
+export const getTopics = () => {
+  return api.get("/topics").then((response) => response.data);
 };
