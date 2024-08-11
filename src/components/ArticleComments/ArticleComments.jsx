@@ -8,6 +8,8 @@ export default function ArticleComments({
   comments,
   article_id,
   setComments,
+  handleIncrementComment,
+  handleDecrementComment,
 }) {
   const [commentValue, setCommentValue] = useState("");
   const [allComments, setAllComments] = useState(comments);
@@ -21,11 +23,13 @@ export default function ArticleComments({
   function handleDeleteComment(e, comment_id) {
     e.preventDefault();
 
-    deleteComment(comment_id).then(() => {
-      setComments((state) => {
-        return state.filter((comment) => comment.comment_id !== comment_id);
-      });
-    });
+    deleteComment(comment_id)
+      .then(() => {
+        setComments((state) => {
+          return state.filter((comment) => comment.comment_id !== comment_id);
+        });
+      })
+      .then(() => handleDecrementComment());
   }
 
   function handleOnClick(e) {
@@ -42,6 +46,7 @@ export default function ArticleComments({
         .then(() => {
           setOpenSuccessSnackBar(true);
           setCommentValue("");
+          handleIncrementComment();
         });
     } else {
       setOpenErrorSnackBar(true);

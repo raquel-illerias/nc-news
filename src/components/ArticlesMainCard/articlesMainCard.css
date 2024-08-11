@@ -1,0 +1,9 @@
+.vote-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.vote-text {
+  margin-right: 6px;
+}

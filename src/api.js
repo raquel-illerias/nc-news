@@ -4,9 +4,11 @@ const api = axios.create({
   baseURL: "https://raquel-illerias-be-nc-news.onrender.com/api",
 });
 
-export const getArticles = (topic) => {
+export const getArticles = (sort_by, order, topic) => {
   return api
-    .get(`/articles${topic ? `?topic=${topic}` : ""}`)
+    .get(
+      `articles?sort_by=${sort_by}&order=${order}${topic ? `&topic=${topic}` : ""}`
+    )
     .then(({ data }) => {
       return data.articles;
     });

@@ -81,7 +81,7 @@
 }
 
 .topics__container {
-  width: 400px;
+  width: 500px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -94,15 +94,26 @@
   padding: 10px 15px;
 }
 
-.topic__links-container {
+.topic__buttons-container {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0px 15px;
+  margin-bottom: 15px;
 }
 
-.topic__links {
+.topic__buttons {
   font-size: 1.2rem;
   padding: 10px 15px;
   text-transform: capitalize;
+}
+
+.sorting__container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  margin-bottom: 15px;
 }

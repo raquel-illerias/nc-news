@@ -33,6 +33,20 @@ export default function IndividualArticle() {
     }
   }
 
+  function handleIncrementComment() {
+    setArticle((prevArticle) => ({
+      ...prevArticle,
+      comment_count: `${Number(prevArticle.comment_count) + 1}`,
+    }));
+  }
+
+  function handleDecrementComment() {
+    setArticle((prevArticle) => ({
+      ...prevArticle,
+      comment_count: `${Number(prevArticle.comment_count) - 1}`,
+    }));
+  }
+
   function handleComments() {
     setShowComments(!showComments);
   }
@@ -120,6 +134,8 @@ export default function IndividualArticle() {
           setComments={setComments}
           showComments={showComments}
           article_id={article_id}
+          handleIncrementComment={handleIncrementComment}
+          handleDecrementComment={handleDecrementComment}
         />
       </section>
     </div>

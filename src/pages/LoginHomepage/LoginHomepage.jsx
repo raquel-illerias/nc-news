@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import "./loginHomepage.css";
 import { useState } from "react";
 
-export default function LoginHomepage() {
+export default function LoginHomepage({ initialPath }) {
   const navigate = useNavigate();
   const [user, setUser] = useState({
     username: "",
@@ -18,7 +18,7 @@ export default function LoginHomepage() {
   function handleLogin(e) {
     e.preventDefault();
     localStorage.setItem("username", user.username);
-    navigate("/articles");
+    navigate(initialPath);
   }
 
   return (

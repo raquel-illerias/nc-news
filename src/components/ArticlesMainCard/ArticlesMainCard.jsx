@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import voteIcon from "../../assets/vote-icon.svg";
 import voteDownIcon from "../../assets/vote-down-icon.svg";
 import { patchVoteInArticle } from "../../api";
+import "./articlesMainCard.css";
 
 export default function ArticlesMainCard({ articles, setArticles }) {
   function handleClickVote(article_id, increment) {

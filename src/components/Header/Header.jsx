@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import logo from "../../assets/logo.png";
 import logoutIcon from "../../assets/logout-icon.svg";
 
-export default function Header() {
+export default function Header({ initialPath }) {
   const location = useLocation();
   const [username, setUsername] = useState(
     () => localStorage.getItem("username") || ""
@@ -17,7 +17,7 @@ export default function Header() {
   return (
     !(location.pathname === "/") && (
       <div className="header">
-        <Link className="logo-anchor" to="/articles">
+        <Link className="logo-anchor" to={initialPath}>
           <img
             className="logo-img"
             src={logo}
@@ -36,7 +36,7 @@ export default function Header() {
             </h2>
           </div>
           <div className="logout-container">
-            <Link to={`/`}>
+            <Link className="logout-Link" to={`/`}>
               <img
                 className="header__logout-img"
                 src={logoutIcon}
