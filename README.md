@@ -15,7 +15,7 @@ NC News is a news aggregation platform where users can read articles, comment on
 - Browse articles on various topics
 - Sort articles by author, date, and votes
 - Add and delete comments on articles
-- Upvote or downvote articles and comments
+- Upvote or downvote articles
 
 ## Back End Repository
 
