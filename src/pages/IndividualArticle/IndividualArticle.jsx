@@ -7,6 +7,10 @@ import {
 } from "../../api";
 import voteIcon from "../../assets/vote-icon.svg";
 import voteDownIcon from "../../assets/vote-down-icon.svg";
+import arrowDownIcon from "../../assets/arrow-dropdown-icon.svg";
+import commentsIcon from "../../assets/comments-icon.svg";
+import Lottie from "react-lottie";
+import loadingAnimation from "../../animations/cat-ball-load-animation.json";
 import "./individualArticle.css";
 import ArticleComments from "../../components/ArticleComments/ArticleComments";
 
@@ -16,6 +20,11 @@ export default function IndividualArticle() {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [showComments, setShowComments] = useState(false);
+
+  const defaultOptions = {
+    loop: true,
+    animationData: loadingAnimation,
+  };
 
   function handleClickVote(increment) {
     if (increment > 0 || (increment < 0 && article.votes > 0)) {
@@ -80,7 +89,12 @@ export default function IndividualArticle() {
   if (isLoading) {
     return (
       <div>
-        <h2>Loading...</h2>
+        <div className="loading-container">
+          <h3>
+            Please hold on, we're gathering your data. This might take a minute!
+          </h3>
+          <Lottie options={defaultOptions} height={360} width={360} />
+        </div>
       </div>
     );
   }
@@ -99,7 +113,10 @@ export default function IndividualArticle() {
             alt="article"
           />
           <div className="individual-article__details-container">
-            <h6 className="individual-article__author">{article.author}</h6>
+            <h6 className="individual-article__author">
+              Written by {""}
+              <span>{article.author}</span>
+            </h6>
           </div>
           <p className="individual-article__body">{article.body}</p>
 
@@ -109,21 +126,28 @@ export default function IndividualArticle() {
               onClick={handleComments}
             >
               <h5 className="individual-article__comment-text">
-                Comments- {article.comment_count}
+                Comments{" "}
+                <img
+                  className="individual-article__img-comment"
+                  src={commentsIcon}
+                  alt="comments icon"
+                />{" "}
+                {article.comment_count}
               </h5>
+              <img src={arrowDownIcon} alt="arrow dropdown icon" />
             </div>
             <div className="individual-article__vote-block">
               <img
                 src={voteIcon}
                 alt="Vote up icon"
-                className="individual-article__vote-icon"
+                className="individual-article__vote-icon vote-up"
                 onClick={() => handleClickVote(1)}
               />
               <h5 className="individual-article__vote-text">{article.votes}</h5>
               <img
                 src={voteDownIcon}
                 alt="Vote down icon"
-                className="individual-article__vote-icon"
+                className="individual-article__vote-icon vote-down"
                 onClick={() => handleClickVote(-1)}
               />
             </div>

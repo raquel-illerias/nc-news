@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import voteIcon from "../../assets/vote-icon.svg";
-import voteDownIcon from "../../assets/vote-down-icon.svg";
+import voteIcon from "../../assets/thum-up-blue-icon.svg";
+import voteDownIcon from "../../assets/thumb-down-blue-icon.svg";
+import commentsIcon from "../../assets/comments-blue-icon.svg";
 import { patchVoteInArticle } from "../../api";
 import "./articlesMainCard.css";
 
@@ -34,6 +35,17 @@ export default function ArticlesMainCard({ articles, setArticles }) {
     );
   }
 
+  const formatDate = (isoString) => {
+    const date = new Date(isoString);
+
+    return date.toLocaleDateString("en-GB", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  };
+
   return (
     <>
       {articles.map((article) => (
@@ -47,30 +59,38 @@ export default function ArticlesMainCard({ articles, setArticles }) {
               />
             </div>
             <h2 className="article-title">{article.title}</h2>
+            <div className="article-subtitle__container">
+              <h4 className="article-topic">{article.topic.toUpperCase()}</h4>
+              <h3 className="article-date">
+                {formatDate(article.created_at)} | Written by{" "}
+                <span className="article-author__username">
+                  {article.author.charAt(0).toUpperCase() +
+                    article.author.slice(1).toLowerCase()}
+                </span>
+              </h3>
+              <h3 className="article-author"></h3>
+            </div>
           </Link>
-          <h3 className="article-author">
-            {article.author.charAt(0).toUpperCase() +
-              article.author.slice(1).toLowerCase()}
-          </h3>
-          <h4 className="article-topic">{article.topic.toUpperCase()}</h4>
           <div className="vote-comments-container">
             <div className="comment-block">
               <h5 className="comment-text">
-                Comments: {article.comment_count}
+                Comments{" "}
+                <img src={commentsIcon} alt="comment icon" width={15} />{" "}
+                {article.comment_count}
               </h5>
             </div>
             <div className="vote-block">
               <img
                 src={voteIcon}
                 alt="Vote up icon"
-                className="vote-icon"
+                className="vote-icon vote-up"
                 onClick={() => handleClickVote(article.article_id, 1)}
               />
               <h5 className="vote-text">{article.votes}</h5>
               <img
                 src={voteDownIcon}
                 alt="Vote down icon"
-                className="vote-icon"
+                className="vote-icon vote-down"
                 onClick={() => handleClickVote(article.article_id, -1)}
               />
             </div>

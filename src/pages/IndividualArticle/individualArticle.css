@@ -45,12 +45,15 @@
 }
 
 .individual-article__author {
-  text-transform: uppercase;
   font-family: "DM Serif Display", serif;
-  font-weight: 400;
-  font-style: normal;
+  font-weight: 200;
   font-size: 1rem;
   text-align: left;
+}
+
+.individual-article__author span {
+  text-transform: uppercase;
+  font-weight: 400;
 }
 
 .individual-article__details-container {
@@ -105,11 +108,29 @@
 .individual-article__comment-text {
   font-size: 1rem;
   color: #333;
-  border-bottom: 2px solid #333;
   text-align: justify;
 }
 
 .individual-article__comment-text:hover {
   color: #585757;
   border-bottom: 2px solid #585757;
+}
+
+.individual-article__img-comment {
+  width: 15px;
+  margin: 0 5px;
+}
+
+.individual-article__vote-icon {
+  transition: filter 0.3s ease;
+}
+
+.vote-down:hover {
+  filter: invert(32%) sepia(73%) saturate(4529%) hue-rotate(0deg)
+    brightness(93%) contrast(93%);
+}
+
+.vote-up:hover {
+  filter: invert(52%) sepia(67%) saturate(2832%) hue-rotate(104deg)
+    brightness(100%) contrast(100%);
 }

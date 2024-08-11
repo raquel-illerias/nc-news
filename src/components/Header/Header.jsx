@@ -23,7 +23,7 @@ export default function Header({ initialPath }) {
             src={logo}
             alt="Company logo featuring a stylized globe with interconnected lines symbolizing global connectivity. The logo is composed of blue and teal colors, emphasizing a modern and digital look."
           />
-          <h1>NC NEWS</h1>
+          <h1>NC News</h1>
         </Link>
         <div className="header__log-container">
           <div className="header__username-container">

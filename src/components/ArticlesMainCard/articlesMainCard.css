@@ -7,3 +7,19 @@
 .vote-text {
   margin-right: 6px;
 }
+
+.vote-icon {
+  transition: filter 0.3s ease;
+}
+
+.vote-down:hover {
+  filter: invert(32%) sepia(73%) saturate(4529%) hue-rotate(0deg)
+    brightness(93%) contrast(93%);
+  cursor: pointer;
+}
+
+.vote-up:hover {
+  filter: invert(52%) sepia(67%) saturate(2832%) hue-rotate(104deg)
+    brightness(100%) contrast(100%);
+  cursor: pointer;
+}

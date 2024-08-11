@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import "./articleComments.css";
 import { postComment, deleteComment } from "../../api";
-import deleteIcon from "../../assets/delete-icon.svg";
 
 export default function ArticleComments({
   showComments,
@@ -74,8 +73,16 @@ export default function ArticleComments({
               className="article-comments__delete-container"
               onClick={(e) => handleDeleteComment(e, comment.comment_id)}
             >
-              <img src={deleteIcon} alt="delete comment icon" />
-              <h4>Delete comment</h4>
+              <h4>Delete</h4>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="20px"
+                viewBox="0 -960 960 960"
+                width="24px"
+                fill="#ca0204"
+              >
+                <path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z" />
+              </svg>
             </div>
           )}
         </div>
@@ -134,12 +141,23 @@ export default function ArticleComments({
           value={commentValue}
           onChange={handleChange}
         />
-        <button
-          className="individual-article__form-button"
-          onClick={handleOnClick}
-        >
-          POST
-        </button>
+        <div className="comment-form__button-container">
+          <button
+            className="individual-article__form-button"
+            onClick={handleOnClick}
+          >
+            POST
+          </button>
+        </div>
+        <div className="article-comments__explanation-container">
+          <p className="individual-article__form-p">
+            Your comment will appear at the top of the list with your username
+          </p>
+          <p className="individual-article__form-p">
+            A delete button will appear for comments made under your username,
+            allowing you to remove them at any time
+          </p>
+        </div>
       </form>
       {openSuccessSnackBar && (
         <div className="article-comments__success-container">

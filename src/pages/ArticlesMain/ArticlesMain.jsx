@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import "./articlesMain.css";
 import { getArticles } from "../../api";
 import ArticlesMainCard from "../../components/ArticlesMainCard/ArticlesMainCard";
+import Lottie from "react-lottie";
+import loadingAnimation from "../../animations/cat-ball-load-animation.json";
 
 export default function ArticlesMain({
   topics,
@@ -12,6 +14,11 @@ export default function ArticlesMain({
 }) {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+
+  const defaultOptions = {
+    loop: true,
+    animationData: loadingAnimation,
+  };
 
   const renderTopics = () => {
     return topics.map((topic) => {
@@ -41,8 +48,11 @@ export default function ArticlesMain({
 
   if (isLoading) {
     return (
-      <div>
-        <h2>Loading...</h2>
+      <div className="loading-container">
+        <h3>
+          Please hold on, we're gathering your data. This might take a minute!
+        </h3>
+        <Lottie options={defaultOptions} height={360} width={360} />
       </div>
     );
   }
@@ -65,12 +75,9 @@ export default function ArticlesMain({
             >
               <option value="author">Author</option>
               <option value="title">Title</option>
-              <option value="article_id">Article id</option>
-              <option value="topic">Topic</option>
-              <option value="created_at">Created at</option>
-              <option value="votes">Votes</option>
-              <option value="article_img_url">Article img URL</option>
-              <option value="comment_count">Comment count</option>
+              <option value="created_at">Date</option>
+              <option value="votes">Number of likes</option>
+              <option value="comment_count">Number of comments</option>
             </select>
           </div>
           <div className="sorting__input">

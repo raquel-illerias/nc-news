@@ -1,7 +1,36 @@
 @import url("https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300..900&display=swap");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+body {
+  font-family: "PT Sans Narrow", sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  background-color: #f1f5f9; /* Lighter background to complement deep blue */
+}
+
+.loading-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+}
+
+.loading-container h3 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  text-align: center;
+  line-height: 2rem;
+  color: #4a4a4a;
+}
 
 .articles-grid {
   width: 90%;
+  max-width: 1200px;
   margin: auto;
   display: grid;
   gap: 20px;
@@ -11,12 +40,21 @@
 
 .article-container {
   padding: 20px;
-  border: 1px solid #dedddd;
-  background-color: #fff;
-  box-shadow: 0 4px 8px rgba(72, 71, 71, 0.1);
+  border: 1px solid #e0e0e0;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.article-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
 .article__img-container {
@@ -26,31 +64,54 @@
 }
 
 .article-image {
-  width: 200px;
+  max-width: 100%;
   height: auto;
+  border-radius: 8px;
 }
 
 .article-title {
-  color: #212020;
-  font-size: 22px;
-  font-weight: bold;
+  color: #2f4858;
+  font-size: 1.25rem;
+  font-weight: 500;
   margin: 10px 0;
   text-align: center;
+  font-family: "Frank Ruhl Libre", serif;
+  height: 120px;
+}
+
+.article-subtitle__container {
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
 }
 
 .article-author {
-  color: #a2a0a0;
-  font-size: 16px;
+  color: #6c757d;
+  font-weight: 300;
+  font-size: 0.875rem;
+  font-family: "PT Sans Narrow", sans-serif;
+}
+
+.article-author__username {
+  font-weight: 400;
 }
 
 .article-topic {
-  color: #a2a0a0;
+  color: #495057;
   font-family: "PT Sans Narrow", sans-serif;
   font-weight: 400;
-  font-style: normal;
-  font-size: 16px;
+  font-size: 1rem;
+  margin: 4px 0;
+}
+
+.article-date {
+  color: #495057;
+  font-family: "PT Sans Narrow", sans-serif;
+  font-weight: 400;
+  font-size: 0.875rem;
   margin-top: 4px;
-  margin-bottom: 12px;
 }
 
 .vote-comments-container {
@@ -59,7 +120,7 @@
   align-items: center;
   margin-top: 15px;
   padding-top: 10px;
-  border-top: 1px solid #eee;
+  border-top: 1px solid #e0e0e0;
 }
 
 .vote-block,
@@ -70,50 +131,142 @@
 
 .vote-icon {
   margin-right: 8px;
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
+  color: #495057;
 }
 
 .vote-text,
 .comment-text {
-  font-size: 16px;
-  color: #212020;
+  font-size: 1rem;
+  color: #2f4858;
+  font-weight: 400;
+}
+
+.vote-text {
+  font-weight: 500;
 }
 
 .topics__container {
-  width: 500px;
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  background-color: rgb(216, 245, 235);
+  background-color: #f6fcfc;
+  padding: 20px;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .topic__header {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   padding: 10px 15px;
+  text-align: center;
+  font-family: "Frank Ruhl Libre", serif;
+  color: #2f4858;
 }
 
 .topic__buttons-container {
   width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0px 15px;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
   margin-bottom: 15px;
 }
 
-.topic__buttons {
-  font-size: 1.2rem;
-  padding: 10px 15px;
+.topic__button {
+  font-size: 1rem;
+  padding: 10px 20px;
   text-transform: capitalize;
+  border: none;
+  background-color: #2f4858;
+  color: #ffffff;
+  border-radius: 15px;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease;
+}
+
+.topic__button:hover {
+  background-color: #1d2a38;
+  transform: scale(1.05);
 }
 
 .sorting__container {
-  width: 100%;
+  width: 50%;
+  height: 120px;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 10px;
-  margin-bottom: 15px;
+  gap: 10px;
+}
+
+.sorting__input {
+  width: 100%;
+  height: 100px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+}
+
+.sorting__input label {
+  font-size: 0.9rem;
+  margin-right: 5px;
+  color: #2f4858;
+}
+
+.sorting__input select {
+  font-size: 0.9rem;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.sorting__input select:focus {
+  border-color: #2f4858;
+  outline: none;
+}
+
+.topic__buttons {
+  font-size: 1rem;
+  padding: 10px 20px;
+  text-transform: capitalize;
+  border: none;
+  background-color: #2f4858;
+  color: #ffffff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  display: inline-block;
+  margin: 5px;
+}
+
+.topic__buttons:hover {
+  background-color: #1d2a38;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.topic__buttons:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 150, 136, 0.3);
+}
+
+.topic__buttons:active {
+  background-color: #2f4858;
+  transform: scale(1);
 }

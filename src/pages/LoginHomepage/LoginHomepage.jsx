@@ -23,7 +23,7 @@ export default function LoginHomepage({ initialPath }) {
 
   return (
     <div className="login-homepage">
-      <div className="login-container">
+      <div className="login-homepage__form-container">
         <div className="login-container__h1-container">
           <h1 className="login-container__h1">Welcome to NC News</h1>
         </div>
