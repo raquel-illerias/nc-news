@@ -9,7 +9,7 @@
 }
 
 .logo-anchor {
-	width: 200px;
+	width: 180px;
 	height: 100%;
 	margin: 0 0.4rem;
 	display: flex;
@@ -18,7 +18,7 @@
 }
 
 .logo-img {
-	width: 35px;
+	width: 30px;
 }
 
 .header h1 {
@@ -54,7 +54,7 @@
 }
 
 .header__username {
-	font-size: 1rem;
+	font-size: 0.9rem;
 	color: #000;
 	font-weight: 400;
 }
