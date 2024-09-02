@@ -173,14 +173,14 @@ body::before {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background-color: #f6fcfc;
+	background-color: #fafdfd;
 	padding: 20px;
 	border-radius: 0 0 10px 10px;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .topic__header {
-	font-size: 1.75rem;
+	font-size: 1.5rem;
 	padding: 10px 15px;
 	text-align: center;
 	font-family: 'Frank Ruhl Libre', serif;
@@ -194,25 +194,6 @@ body::before {
 	gap: 10px;
 	justify-content: center;
 	margin-bottom: 15px;
-}
-
-.topic__button {
-	font-size: 1rem;
-	padding: 10px 20px;
-	text-transform: capitalize;
-	border: none;
-	background-color: #2f4858;
-	color: #ffffff;
-	border-radius: 15px;
-	cursor: pointer;
-	transition:
-		background-color 0.3s ease,
-		transform 0.2s ease;
-}
-
-.topic__button:hover {
-	background-color: #1d2a38;
-	transform: scale(1.05);
 }
 
 .sorting__container {
@@ -264,7 +245,7 @@ body::before {
 	border: none;
 	background-color: #2f4858;
 	color: #ffffff;
-	border-radius: 8px;
+	border-radius: 20px;
 	cursor: pointer;
 	transition:
 		background-color 0.3s ease,
