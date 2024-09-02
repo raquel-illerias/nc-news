@@ -46,7 +46,7 @@ export default function LoginHomepage({ initialPath }) {
 					<form action='' className='login-form' onSubmit={handleLogin}>
 						<div className='form-group'>
 							<label htmlFor='username' className='form-label'>
-								Select Username
+								Select username
 							</label>
 							<select
 								id='username'
