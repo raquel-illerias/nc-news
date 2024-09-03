@@ -4,7 +4,7 @@ Welcome to NC News, a full-stack web application that allows users to browse, re
 
 ## Deployed Version
 
-Visit the live site here: [NC News](https://66b900f5e24d818de3079562--nc-news-raquel-illerias.netlify.app/articles?sort_by=author&order=asc)
+Visit the live site here: [NC News](https://nc-news-raquel-illerias.netlify.app/)
 
 ## General Information
 
@@ -19,7 +19,7 @@ NC News is a news aggregation platform where users can read articles, comment on
 
 ## Back End Repository
 
-Find the back end code for NC News here: [NC News API Repository](https://github.com/username/nc-news-api) (replace `username` with the actual GitHub username)
+Find the back end code for NC News here: [NC News API Repository](https://github.com/raquel-illerias/be-nc-news)
 
 ## Minimum Requirements
 
